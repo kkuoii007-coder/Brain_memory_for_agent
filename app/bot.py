@@ -310,8 +310,8 @@ async def on_text_message(message: Message, context: AppContext) -> None:
         )
         return
 
-    # Индикатор набора
-    await message.answer_chat_action("typing")
+    # Индикатор набора ("печатает...")
+    await message.bot.send_chat_action(chat_id=message.chat.id, action="typing")
 
     result = await context.chat_service.handle_message(
         telegram_user_id=user_id,
